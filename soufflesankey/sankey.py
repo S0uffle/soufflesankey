@@ -2071,3 +2071,15 @@ def detail_at_one_node(source_target_df, node):
 
     return fig
 
+def filter_by_prefix(data_list, n):
+    if not isinstance(data_list, list) or not isinstance(n, int):
+        return ""  # Handle invalid input
+
+    if not data_list:  # Handle empty input list
+        return ""
+        
+    prefix = str(n) + "."
+
+    filtered_list = [item for item in data_list if isinstance(item, str) and item.startswith(prefix) and (len(item) == len(prefix) or item[len(prefix)] != '.')]
+
+    return ", ".join(filtered_list)
